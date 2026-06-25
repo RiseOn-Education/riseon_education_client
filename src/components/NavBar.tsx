@@ -4,7 +4,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
-import { Button } from './ui/button';
 import { Menu, X } from 'lucide-react';
 
 export function NavBar() {
@@ -50,24 +49,19 @@ export function NavBar() {
 
           {/* Desktop Navigation */}
           <div className='hidden md:flex space-x-6'>
+            <Link href='/' className={getLinkClassName('/')}>
+              Home
+            </Link>
             <Link href='/about' className={getLinkClassName('/about')}>
-              About
+              Meet the Team
             </Link>
             <Link href='/services' className={getLinkClassName('/services')}>
               Services
             </Link>
-            {/* <Link href='/team' className={getLinkClassName('/team')}>
-              Our Team
-            </Link> */}
             <Link href='/#contact' className={getLinkClassName('#contact')}>
               Contact Us
             </Link>
           </div>
-
-          {/* Desktop Get Started Button */}
-          <Link href='/services' className='hidden md:block'>
-            <Button className='bg-riseon-cream hover:bg-riseon-cream/90 text-riseon-green lg:text-lg'>Get Started</Button>
-          </Link>
 
           {/* Mobile Menu Button */}
           <button
@@ -83,16 +77,16 @@ export function NavBar() {
         {isMobileMenuOpen && (
           <div className='md:hidden border-t border-riseon-cream/30 mt-2 pt-4 pb-4'>
             <div className='space-y-2'>
+              <Link href='/' className={getLinkClassName('/', true)} onClick={closeMobileMenu}>
+                Home
+              </Link>
               <Link href='/about' className={getLinkClassName('/about', true)} onClick={closeMobileMenu}>
-                About
+                Meet the Team
               </Link>
               <Link href='/services' className={getLinkClassName('/services', true)} onClick={closeMobileMenu}>
                 Services
               </Link>
-              {/* <Link href='/team' className={getLinkClassName('/team', true)} onClick={closeMobileMenu}>
-                Our Team
-              </Link> */}
-              <Link href='#contact' className={getLinkClassName('#contact', true)} onClick={closeMobileMenu}>
+              <Link href='/#contact' className={getLinkClassName('#contact', true)} onClick={closeMobileMenu}>
                 Contact Us
               </Link>
             </div>

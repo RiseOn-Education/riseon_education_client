@@ -12,16 +12,9 @@ interface CalendlyButtonProps {
 
 export function CalendlyButton({ className = '', size = 'lg', variant = 'default', children }: CalendlyButtonProps) {
   // TODO: Replace with your actual Calendly link
-  const CALENDLY_URL = process.env.NEXT_PUBLIC_CALENDLY_URL || '#';
+  const CALENDLY_URL = process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendar.app.google/AqCWHjCyH4cdsiK59';
 
   const handleCalendlyClick = () => {
-    if (CALENDLY_URL === '#') {
-      // Temporary alert for development
-      alert('Calendly link will be added soon! Please contact us directly for now.');
-      return;
-    }
-
-    // Open Calendly in new tab
     window.open(CALENDLY_URL, '_blank', 'noopener,noreferrer');
   };
 

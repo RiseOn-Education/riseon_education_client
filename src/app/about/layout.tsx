@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About Us | RiseOn Education | Expert K-12 Tutoring Team in Toronto',
+  title: 'Meet the Team | RiseOn Education | Expert K-12 Tutoring Team in Toronto',
   description:
-    'Meet the passionate educators and founders behind RiseOn Education. Learn about our mission to transform learning into limitless opportunities through personalized K-12 tutoring and admissions counseling in Toronto.',
-  keywords: 'about RiseOn Education, Toronto tutoring team, education founders, K-12 tutors, admissions counselors, Markham educators',
+    'Meet the world-class educators and academic mentors at RiseOn Education. Our diverse team provides personalized mentorship in literacy, STEM, admissions consulting, and academic research.',
+  keywords: 'RiseOn Education team, Toronto tutoring team, education mentors, K-12 tutors, admissions counselors, Markham educators',
   openGraph: {
-    title: 'About RiseOn Education | Expert Educators in Toronto',
-    description: 'Meet our passionate team of educators dedicated to transforming learning into limitless opportunities.',
+    title: 'Meet the Team | RiseOn Education',
+    description: 'World-class educators and personalized mentorship from top universities and leading schools.',
     url: 'https://riseon-education.com/about',
     type: 'website',
   },

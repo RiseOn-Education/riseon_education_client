@@ -13,18 +13,17 @@ export function Footer() {
                 <p className='text-sm text-white/80'>From Pages to Possibilities</p>
               </div>
             </div>
-            <p className='text-white/80'>Transforming learning into limitless opportunities through elite K-12 tutoring and admissions counseling.</p>
+            <p className='text-white/80'>Personalized Academic Enrichment & Admissions Guidance for Ambitious Students</p>
           </div>
 
           <div>
             <h4 className='text-lg font-semibold mb-4'>Services</h4>
             <ul className='space-y-2 text-white/80'>
-              <li>K-12 English Tutoring</li>
-              <li>K-12 French Tutoring</li>
-              <li>Admissions Counseling</li>
-              <li>Public Speaking</li>
-              <li>Executive Functions</li>
-              <li>1:1 Academic Supervision</li>
+              <li>K–12 Academic Enrichment</li>
+              <li>U.S. & Canada Private School Admissions Consulting</li>
+              <li>Enrichment & Profile Building Programs</li>
+              <li>U.S. College Counseling</li>
+              <li>Academic Supervision & Executive Function Coaching</li>
             </ul>
           </div>
 
@@ -35,10 +34,9 @@ export function Footer() {
               <span>Markham, ON | </span>
               <span>Toronto Area</span>
             </div>
-            {/* add actual contact information with phone and email with icon*/}
             <div className='space-y-2 text-white/80 mt-5'>
               <p>
-                <PhoneIcon className='inline-block mr-2' /> Phone: 437-688-1001
+                <PhoneIcon className='inline-block mr-2' /> Phone: 905-205-2295
               </p>
               <p>
                 <MailIcon className='inline-block mr-2' /> Email: contact@riseoneducation.com

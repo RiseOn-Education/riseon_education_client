@@ -2,97 +2,98 @@
 
 import { useState } from 'react';
 import { Card, CardDescription, CardHeader, CardTitle } from './ui/card';
+import { Badge } from './ui/badge';
 import Image from 'next/image';
-import { LinkedinIcon, MailIcon } from 'lucide-react';
 
-// Co-founders data
-export const coFounders = [
+export interface TeamMember {
+  name: string;
+  title: string;
+  image: string;
+  description: string;
+  expertise: string;
+}
+
+export const teamMembers: TeamMember[] = [
   {
-    name: 'CF1',
-    title: 'Co-Founder & CEO',
-    image: '/team/emily-chen.jpg',
-    description: 'Passionate educator with 15+ years experience transforming K-12 learning through innovative, personalized teaching methods.',
-    email: 'emily@riseon-education.com',
-    linkedin: 'linkedin.com/in/emily-chen-education',
+    name: 'Aime Kayembe',
+    title: 'French Specialist | OCT Certified Teacher',
+    image: '/team/Aime\u0301.jpg',
+    description:
+      'Aime is a French educator currently pursuing a Ph.D. in K–12 Educational Leadership at the University of Calgary. He holds both a Bachelor\'s and Master\'s degree in Education from Trent University and teaches French at Lakefield College School, one of Ontario\'s leading boarding schools. As a certified DELF examiner, he helps students develop advanced language proficiency while building confidence in French communication and cultural understanding.',
+    expertise: 'French (Core, Extended & Immersion), DELF Preparation, AP French, IB French',
   },
   {
-    name: 'CF2',
-    title: 'Co-Founder & Director of Operations',
-    image: '/team/michael-rodriguez.jpg',
-    description: 'Educational strategist specializing in admissions counseling and program development with proven student success track record.',
-    email: 'michael@riseon-education.com',
-    linkedin: 'linkedin.com/in/michael-rodriguez-edu',
+    name: 'Daniel Pun',
+    title: 'IB & Academic Enrichment Specialist | OCT Certified Teacher',
+    image: '/team/Daniel.jpg',
+    description:
+      'Daniel holds a Master of Education and Bachelor of Education from Wilfrid Laurier University, as well as an Honours B.A. in English from the University of Toronto. With experience as an IB MYP Coordinator and curriculum leader, he specializes in helping students excel in academic writing, humanities, and interdisciplinary learning.',
+    expertise: 'IB MYP/DP English, Humanities, Academic Writing, SSAT',
+  },
+  {
+    name: 'Ryan Cook',
+    title: 'SAT & Humanities Specialist',
+    image: '/team/Ryan.jpg',
+    description:
+      'Ryan earned his M.A. in Philosophy from Princeton University and taught in the Department of Philosophy at UCLA for eight years. He has extensive experience teaching SAT, ACT, SSAT, and advanced humanities courses, helping students strengthen critical thinking, reading comprehension, and academic writing skills.',
+    expertise: 'SAT, ACT, SSAT, OSSD / AP English, Philosophy, History, Academic Writing',
+  },
+  {
+    name: 'Dr. Suzy Wang',
+    title: 'Literacy Development Specialist',
+    image: '/team/suzy.jpg',
+    description:
+      'Dr. Wang holds a Ph.D. in Linguistics from Wilfrid Laurier University and an M.Ed. from Boston University. With years of experience teaching students from diverse backgrounds, she specializes in literacy development, vocabulary acquisition, reading comprehension, and academic writing.',
+    expertise: 'Reading & Writing Development, SSAT, Literary Analysis',
+  },
+  {
+    name: 'Yashu Shi',
+    title: 'ESL & Language Development Specialist',
+    image: '/team/Yashu.jpg',
+    description:
+      'Yashu holds a Master\'s degree in Education from the University of Glasgow and is currently pursuing further studies in Curriculum and Pedagogy at the University of Toronto. She has extensive experience supporting multilingual learners and helping students develop confidence in reading, writing, and communication.',
+    expertise: 'ESL, Literacy Development, TOEFL, IELTS',
+  },
+  {
+    name: 'Tess Qiu',
+    title: 'Biology & Life Sciences Specialist',
+    image: '/team/Tess.JPG',
+    description:
+      'Tess holds a Master\'s degree in Education and is an IB-certified science educator. She has taught across public schools, private schools, and educational institutions in North America, helping students achieve outstanding results in AP Biology, IB Biology, and senior science courses.',
+    expertise: 'AP Biology, IB Biology, A-Level Biology, OSSD Biology & Chemistry',
+  },
+  {
+    name: 'Claire Buttery',
+    title: 'English Literature & Writing Specialist',
+    image: '/team/Claire.jpg',
+    description:
+      'Claire is currently pursuing a Ph.D. in English Literature at Western University and holds both a B.A. and M.A. in English from the University of Toronto. She specializes in literary analysis, academic writing, SSAT preparation, and helping students develop strong reading and communication skills.',
+    expertise: 'OSSD & AP English Tutoring, English Literature, Reading Comprehension, Academic Writing, SSAT',
+  },
+  {
+    name: 'Thomas Zhang',
+    title: 'Math & Science Specialist',
+    image: '/team/Thomas.jpg',
+    description:
+      'Thomas holds a Master\'s degree in Educational Psychology and brings over 20 years of teaching and curriculum leadership experience. He has worked extensively with AP, IB, OSSD, and international curricula, helping students achieve exceptional outcomes in mathematics and science.',
+    expertise: 'AP Calculus, AP Physics, IB Math, IB Physics, SAT Math, OSSD Math & Science',
   },
 ];
 
-// Teaching team data
-export const teachers = [
-  {
-    name: 'Sarah Thompson',
-    title: 'Senior English Tutor',
-    image: '/team/sarah-thompson.jpg',
-    description: 'Award-winning educator helping students discover their voice in writing and develop strong critical thinking skills.',
-    email: 'sarah@riseon-education.com',
-    linkedin: 'linkedin.com/in/sarah-thompson-edu',
-  },
-  {
-    name: 'Dr. François Dubois',
-    title: 'French Language Specialist',
-    image: '/team/francois-dubois.jpg',
-    description: 'Native French speaker bringing authentic language expertise and cultural knowledge to bilingual education.',
-    email: 'francois@riseon-education.com',
-    linkedin: 'linkedin.com/in/francois-dubois-edu',
-  },
-  {
-    name: 'Alexandra Kim',
-    title: 'Public Speaking Coach',
-    image: '/team/alexandra-kim.jpg',
-    description: 'Former media professional empowering students to overcome speaking anxiety and develop confident presentation skills.',
-    email: 'alexandra@riseon-education.com',
-    linkedin: 'linkedin.com/in/alexandra-kim-edu',
-  },
-  {
-    name: 'Dr. James Liu',
-    title: 'Academic Support Specialist',
-    image: '/team/james-liu.jpg',
-    description: 'Learning specialist focused on developing executive function skills and effective study strategies for academic success.',
-    email: 'james@riseon-education.com',
-    linkedin: 'linkedin.com/in/james-liu-edu',
-  },
-  {
-    name: 'Rachel Martinez',
-    title: 'Admissions Counselor',
-    image: '/team/rachel-martinez.jpg',
-    description: 'Former university admissions officer guiding students through competitive application processes with insider expertise.',
-    email: 'rachel@riseon-education.com',
-    linkedin: 'linkedin.com/in/rachel-martinez-edu',
-  },
-  {
-    name: 'David Park',
-    title: 'Mathematics & Science Tutor',
-    image: '/team/david-park.jpg',
-    description: 'STEM specialist making complex mathematical concepts accessible and engaging through innovative teaching approaches.',
-    email: 'david@riseon-education.com',
-    linkedin: 'linkedin.com/in/david-park-edu',
-  },
-];
-
-// Team member card component
-export function TeamMemberCard({ member, isFounder = false }: { member: (typeof teachers)[0] | (typeof coFounders)[0]; isFounder?: boolean }) {
+export function TeamMemberCard({ member }: { member: TeamMember }) {
   const [imageError, setImageError] = useState(false);
 
   return (
-    <Card className={`border-riseon-cream shadow-lg hover:shadow-xl transition-all duration-300 ${isFounder ? 'border-2 border-riseon-green' : ''}`}>
+    <Card className='border-riseon-cream shadow-lg hover:shadow-xl transition-all duration-300 h-full'>
       <CardHeader className='text-center p-8'>
-        {/* Avatar */}
         <div className='w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden bg-riseon-cream relative'>
           {!imageError ? (
             <Image
               src={member.image}
               alt={`${member.name} - ${member.title}`}
-              width={120}
-              height={120}
-              className='w-full h-full object-cover'
+              width={128}
+              height={128}
+              className='w-full h-full object-cover object-[center_15%]'
               onError={() => setImageError(true)}
             />
           ) : (
@@ -107,33 +108,15 @@ export function TeamMemberCard({ member, isFounder = false }: { member: (typeof 
           )}
         </div>
 
-        {/* Name & Title */}
         <CardTitle className='text-riseon-green text-xl mb-2'>{member.name}</CardTitle>
         <CardDescription className='text-gray-600 font-medium mb-4'>{member.title}</CardDescription>
-
-        {/* Description */}
-        <p className='text-gray-700 text-sm leading-relaxed mb-6'>{member.description}</p>
-
-        {/* Contact info for founders */}
-        {member.email && (
-          <div className='flex justify-center space-x-6 pt-4 border-t border-gray-200'>
-            <a href={`mailto:${member.email}`} className='flex items-center text-riseon-green hover:text-riseon-green/80 transition-colors'>
-              <MailIcon className='w-4 h-4 mr-2' />
-              <span className='text-sm font-medium'>Email</span>
-            </a>
-            {member.linkedin && (
-              <a
-                href={`https://${member.linkedin}`}
-                target='_blank'
-                rel='noopener noreferrer'
-                className='flex items-center text-riseon-green hover:text-riseon-green/80 transition-colors'
-              >
-                <LinkedinIcon className='w-4 h-4 mr-2' />
-                <span className='text-sm font-medium'>LinkedIn</span>
-              </a>
-            )}
-          </div>
-        )}
+        <p className='text-gray-700 text-sm leading-relaxed mb-4 text-left'>{member.description}</p>
+        <div className='text-left pt-4 border-t border-gray-200'>
+          <p className='text-sm font-semibold text-riseon-green mb-2'>Expertise:</p>
+          <Badge className='bg-riseon-cream text-riseon-green text-xs font-normal whitespace-normal text-left leading-relaxed'>
+            {member.expertise}
+          </Badge>
+        </div>
       </CardHeader>
     </Card>
   );
